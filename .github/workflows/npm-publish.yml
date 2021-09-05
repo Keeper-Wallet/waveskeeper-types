@@ -8,15 +8,11 @@ on:
 
 jobs:
   publish:
+    if: ${{ github.ref == 'refs/heads/KEEP-33/fix-actions' }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - name: Get sources
         uses: actions/checkout@v2
-
-      - if: ${GITHUB_REF##*/} == 'fix-actions'
 
       - name: Read .nvmrc for Node.js version
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
