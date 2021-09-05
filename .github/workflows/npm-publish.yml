@@ -6,7 +6,6 @@ on:
 
 jobs:
   publish:
-    if: ${{ github.ref == 'refs/heads/KEEP-33/fix-actions' }}
     runs-on: ubuntu-latest
     steps:
       - name: Get sources
