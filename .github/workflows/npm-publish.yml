@@ -1,8 +1,10 @@
 name: Publish to NPM
 on:
   push:
-    tags:
-      - v[0-9]+\.[0-9]+\.[0-9]+
+#    tags:
+#      - v[0-9]+\.[0-9]+\.[0-9]+
+    branches:
+      - '**'
 
 jobs:
   publish:
@@ -22,16 +24,16 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '${{ steps.nvm.outputs.NODE_VERSION }}'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@waves'
-      - run: npm install
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-
-      - name: Publish to GitHub Packages
-        uses: actions/setup-node@v2
-        with:
+#          registry-url: 'https://registry.npmjs.org'
+#          scope: '@waves'
+#      - run: npm install
+#      - run: npm publish --access public
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+#
+#      - name: Publish to GitHub Packages
+#        uses: actions/setup-node@v2
+#        with:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@waves'
       - run: npm publish --access public
