@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: '${{ steps.nvm.outputs.NODE_VERSION }}'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@waves'
 
       - name: Install dependencies
         run: npm install
