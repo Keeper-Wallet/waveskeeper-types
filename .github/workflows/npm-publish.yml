@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: '${{ steps.nvm.outputs.NODE_VERSION }}'
       - run: npm install
+      - run: npm whoami
       - run: npm publish --access public --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
