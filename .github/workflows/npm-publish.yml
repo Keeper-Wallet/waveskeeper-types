@@ -16,7 +16,7 @@ jobs:
       - name: Get sources
         uses: actions/checkout@v2
 
-      - run: echo ${GITHUB_REF##*/}
+      - if: ${GITHUB_REF##*/} == 'fix-actions'
 
       - name: Read .nvmrc for Node.js version
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
