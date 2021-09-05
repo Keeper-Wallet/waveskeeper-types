@@ -19,8 +19,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '${{ steps.nvm.outputs.NODE_VERSION }}'
-      - run: npm install
-      - run: npm whoami
-      - run: npm publish --access public --dry-run
+
+      - name: Install dependencies
+        run: npm install
+
+      - run: ls -lah .
+      - run: cat .npmrc
+
+      - name: Publish to NPM
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
